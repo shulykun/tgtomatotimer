@@ -4,7 +4,6 @@ import json
 import re
 import logging
 import random
-
 import talk.dict_replics as dict_replics
 
 from datetime import datetime
@@ -95,8 +94,6 @@ class processChat:
             return self.message_from_admin(message)
 
         text, text_raw, emoji  = self.textProcessor.get_content(message)
-
-        # return {'text':text}
         text = self.funnel.add_context(message.chat.id, text)
 
         meaning_nodes  = self.search.handle_request(text, d_type='words')
