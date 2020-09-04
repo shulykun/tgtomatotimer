@@ -9,9 +9,8 @@ class Tonque:
     """Класс через который проходят все сообщения"""
 
     def __init__(self):
-        self.bot = telebot.TeleBot(config.token)
+        self.bot = telebot.TeleBot(config.tg_token)
         self.tracker = gaTracker()
-        self.ADMIN_IDS = config.admin_ids
         self.menuChat = menuChat()
 
 
@@ -105,7 +104,7 @@ class Tonque:
         """Отправка фото"""
         # for a_id in self.ADMIN_IDS:
         # self.send_message(a_id, {'text': alert_text})
-        for a_id in self.ADMIN_IDS:
+        for a_id in config.admin_ids:
             # self.send_message(a_id, {'text': 'Вопрос от пользователя:'})
             self.bot.forward_message(a_id, chat_id, message_id)
 
